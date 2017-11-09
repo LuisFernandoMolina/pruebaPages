@@ -1,0 +1,33 @@
+<form #empleadoForm="ngForm" (ngSubmit)="onSubmit(empleadoForm)">
+  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="empleadoService.empleadoSeleccionado.$key">
+  <div class="form-group">
+    <label>Nombre</label>
+    <input class="text form-control" name="nombre" #name="ngModel" [(ngModel)]="empleadoService.empleadoSeleccionado.nombre" placeholder="Nombre" required>
+  </div>
+  <div class="form-group">
+    <label>Posición</label>
+    <input class="text form-control" name="posicion" #name="ngModel" [(ngModel)]="empleadoService.empleadoSeleccionado.posicion" placeholder="Posicion" >
+  </div>
+  <div class="form-group">
+    <label>Oficina</label>
+    <input class="text form-control" name="oficina" #name="ngModel" [(ngModel)]="empleadoService.empleadoSeleccionado.oficina" placeholder="Oficina" >
+  </div>
+  <div class="form-group">
+    <label>Salario</label>
+    <div class="input-group">
+      <div class="input-group-addon">
+        <i class="fa fa-dollar"></i>
+      </div>
+      <input class="text form-control" name="salario" #name="ngModel" [(ngModel)]="empleadoService.empleadoSeleccionado.salario" placeholder="Salario" >
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default" [disabled]="!empleadoForm.valid">
+    <i class="fa fa-floppy-o"></i> Guardar
+    </button>
+    <button type="button" class="btn btn-default" *ngIf="empleadoService.empleadoSeleccionado.$key!=''" (click)="onDelete(empleadoForm)">
+        <i class="fa fa-trash"></i> Borrar</button>
+    <button type="button" class="btn btn-default" (click)="resetForm(empleadoForm)">
+        <i class="fa fa-repeat"></i> Reset</button>
+  </div>
+</form>
